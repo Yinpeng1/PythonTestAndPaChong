@@ -3,11 +3,17 @@ import pytesseract
 import urllib.request
 import requests
 import re
+from http import cookiejar
+from contextlib import closing
+import execjs
 
 
+
+cookie = cookiejar.CookieJar()
+urlOpener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cookie))
 
 def getHtml():
-    papg = urllib.request.urlopen('http://ykjcx.yundasys.com/go.php?wen=3839999344061')  # 打开图片的网址
+    papg = urlOpener.open('http://ykjcx.yundasys.com/go.php?wen=3839999344061')  # 打开图片的网址
     html = papg.read()  # 用read方法读成网页源代码，格式为字节对象
     html = html.decode('gbk')  # 定义编码格式解码字符串(字节转换为字符串)
     return html
@@ -22,7 +28,11 @@ def getimg(html):
         imgUrl = imgurl.replace("src=\\'.", "")
         newImgUrl = "http://ykjcx.yundasys.com/"+imgUrl
         # 下载
-        urllib.request.urlretrieve(url=newImgUrl, filename='C:/img/0.jpg')  # 把图片下载到本地并指定保存目录
+        # urllib.request.urlretrieve(url=newImgUrl, filename='C:/img/0.jpg')  # 把图片下载到本地并指定保存目录
+        response = urlOpener.open(newImgUrl).read()
+        # 这里打开一个空的png文件，相当于创建一个空的txt文件,wb表示写文件
+        with open('C:/img/0.jpg', 'wb') as file:
+             file.write(response)  # data相当于一块一块数据写入到我们的图片文件中
         print("下载完成")  # 格式化输出张数
 
 # 匹配
@@ -36,8 +46,9 @@ getimg(prehtml)
 
 # 注意eng的版本 这边使用的是3.0版本，不然会报错，在exe文件中新建tessdate文件，把各种语言放进去
 code = pytesseract.image_to_string(Image.open("C:/img/0.jpg"), lang="eng", config="-psm 7")
-print(eval(code.replace(":", "")))
 result = eval(code.replace(":", ""))
+print(result)
+
 
 data = {
     "wen": "3839999344061",
@@ -47,13 +58,13 @@ data = {
 
 headers = {
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
-    "Accept-Encoding": "zip, deflate",
+    # "Accept-Encoding": "zip, deflate",
     "Accept-Language": "zh-CN,zh;q=0.9",
-    "Cache-Control": "max-age=0",
+    # "Cache-Control": "max-age=0",
     "Connection": "keep-alive",
     # "Content-Length": "30",
     "Content-Type": "application/x-www-form-urlencoded",
-    "Cookie": "PHPSESSID=h26utvhc4t6mvnhnsv4purvk71; JSESSIONID=1rC5bGTCDzMGSC3L8D9h6pwJHFvPQCh3J92Pnn9yLcVYMFyp2N0G!1051678070",
+    # "Cookie": "PHPSESSID=h26utvhc4t6mvnhnsv4purvk71; JSESSIONID=1rC5bGTCDzMGSC3L8D9h6pwJHFvPQCh3J92Pnn9yLcVYMFyp2N0G!1051678070",
     "Host": "ykjcx.yundasys.com",
     "Origin": "http://ykjcx.yundasys.com",
     "Referer": "http://ykjcx.yundasys.com/go.php",
@@ -62,14 +73,40 @@ headers = {
 }
 
 value = urllib.parse.urlencode(data).encode('utf-8')
-request23 = urllib.request.Request('http://ykjcx.yundasys.com/go_wsd.php', headers=headers)
+request23 = urllib.request.Request('http://ykjcx.yundasys.com/go_wsd.php')
 def getInfoHtml():
-    papg = urllib.request.urlopen(request23, data=value)  # 打开图片的网址
+    papg = urlOpener.open(request23, data=value)  # 打开图片的网址
     html = papg.read()  # 用read方法读成网页源代码，格式为字节对象
-    html = html.decode('gbk')  # 定义编码格式解码字符串(字节转换为字符串)
+    html = html.decode('utf-8')  # 定义编码格式解码字符串(字节转换为字符串)
     return html
 
-print(getInfoHtml())
-# response = requests.post("http://ykjcx.yundasys.com/go_wsd.php", data=result, headers=headers)
-# # 自动解码
-# print(response.text)
+def getValue(html):
+    reg = re.compile(r'var g_s=.*;')  # 正则匹配，compile为把正则表达式编译成一个正则表达式对象，提供效率。
+    allValue = re.findall(reg, repr(html))  # 获取字符串中所有匹配的字符串
+    # keyArr = allValue.split(";")
+    keyArr = allValue[0]
+    keyValue = keyArr.split(";")
+    secretValue= keyValue[0].replace("var g_s=", "")
+    # print(keyValue[0].replace("var g_s=", ""))
+    return secretValue
+
+def get_js():
+    # f = open("D:/WorkSpace/MyWorkSpace/jsdemo/js/des_rsa.js",'r',encoding='UTF-8')
+    f = open("yunda.js", 'r', encoding='gb2312')
+    line = f.readline()
+    htmlstr = ''
+    while line:
+        htmlstr = htmlstr + line
+        line = f.readline()
+    return htmlstr
+
+keyHtml = getInfoHtml()
+print(keyHtml)
+result = getValue(keyHtml)
+print(result)
+
+jsstr = get_js()
+ctx = execjs.compile(jsstr)
+t=ctx.call('allExec', str(result))
+print(t)
+
