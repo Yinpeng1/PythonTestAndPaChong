@@ -51,31 +51,39 @@ var B64 = {
     }
 }
 
+// function getWithBegEnd(sStr, sBeg, sEnd) {
+//     var iFrom = sStr.indexOf(sBeg) + sBeg.length;
+//     var iTo = sStr.indexOf(sEnd);
+//     return sStr.substring(iFrom, iTo);
+// }
+
 // function setgs(str) {
 //     g_s = str;
 // }
 //
-// function decodeValue() {
-//     for (var iR = 0; iR < 3; iR++) {
-//         g_s = B64.decode(g_s)
-//     }
-//     ;
-//     g_s = g_s.substring(3 * 2)
-// }
-//
-// function calValue() {
-//     var a_res = B64.decode(g_s).split(';');
-//     // a_res.sort();
-//     return a_res.sort();
-// }
+
 
 function allExec(str) {
     g_s = str;
-    for (var iR = 0; iR < 5; iR++) {
-        g_s = B64.decode(g_s)
-    }
-    ;
-    g_s = g_s.substring(5 * 2)
+    eval(function (p, a, c, k, e, d) {
+        e = function (c) {
+            return (c < a ? "" : e(parseInt(c/a))) + ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36))
+        };
+        if (!''.replace(/^/, String)) {
+            while (c--) d[e(c)] = k[c] || e(c);
+            k = [function (e) {
+                return d[e]
+            }];
+            e = function () {
+                return '\\w+'
+            };
+            c = 1;
+        }
+        ;
+        while (c--) if (k[c]) p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c]);
+        return p;
+    }('7(4>0){5(6 3=0;3<4;3++){1=9.a(1)};1=1.8(4*2)}', 11, 11, '|g_s||iR|4|for|var|if|substring|B64|decode'.split('|'), 0, {}));
+
     var a_res = B64.decode(g_s).split(';');
     // a_res.sort();
     return a_res.sort();
