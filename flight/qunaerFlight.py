@@ -79,9 +79,9 @@ class TrainTicketSpider(object):
         HTML = etree.HTML(html)
 
         #获取页数
-        # pages = HTML.xpath('//a[@data-pager-pageno]/text()')
-        # page_count = len(pages)
-        page_count = 1
+        # pages = HTML.xpath('//div[@class="main"]/div[@class="content"]/div[@class="m-page"]/div[@class="container"]/a[@data-pager-pageno]/text()')
+        pages = HTML.xpath('//a[@class="page"]/text()')
+        page_count = len(pages) + 1
 
         # fly_list = self.browser.find_element_by_class_name("b-airfly")
         fly_list = HTML.xpath('//div[@class="mb-10"]/div[@class="m-airfly-lst"]/div')
@@ -164,7 +164,13 @@ class TrainTicketSpider(object):
         # 如果有下一页,点击下一页按钮,继续爬取
         page_count -= current_page
         if page_count:
-            pass
+            current_page += 1
+            a_next = self.browser.find_element(By.XPATH, '//a[@data-pager-pageno={page}]'.format(page=current_page))
+            a_next.click()
+            time.sleep(3)
+
+            # 递归调用解析方法
+            self.parse(current_page)
         else:
             print('爬取结束')
             # 关闭数据库
