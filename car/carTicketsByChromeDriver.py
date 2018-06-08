@@ -7,6 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.chrome.options import Options
 
 
 class TrainTicketSpider(object):
@@ -16,12 +17,11 @@ class TrainTicketSpider(object):
     """
 
     def __init__(self):
-        dcap = dict(DesiredCapabilities.PHANTOMJS)
-        dcap["phantomjs.page.settings.userAgent"] = (
-            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36")
-        self.browser = webdriver.PhantomJS(
-            executable_path=r"C:\Users\pyin\AppData\Local\Programs\Python\Python36-32\Scripts\phantomjs-2.1.1-windows\phantomjs-2.1.1-windows\bin\phantomjs.exe")
 
+        chrome_options = Options()
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--disable-gpu')
+        self.browser = webdriver.Chrome("C:\chromedriver\chromedriver.exe", chrome_options=chrome_options)
         self.connection = pymysql.connect(host='localhost',
                                           user='root',
                                           password='123',
@@ -34,31 +34,34 @@ class TrainTicketSpider(object):
         self.browser.set_page_load_timeout(30)
         self.browser.get(url)
 
-        self.browser.save_screenshot('1.png')
+        self.browser.save_screenshot('3.png')
 
         # 发车站输入框
-        fromStation = self.browser.find_element(By.NAME, 'fromStation')
+        fromStation = self.browser.find_element_by_name('fromStation')
         # 目的地站输入框
-        toStation = self.browser.find_element(By.NAME, 'toStation')
+        toStation = self.browser.find_element_by_name('toStation')
         # 发车日期输入框
-        date = self.browser.find_element(By.NAME, 'date')
+        date = self.browser.find_element_by_name('date')
         # 搜索按钮
-        btn_search = self.browser.find_element(By.NAME, 'stsSearch')
+        btn_search = self.browser.find_element_by_name('stsSearch')
+
+        aaa = self.browser.find_element_by_class_name("ch_search_tab");
 
         fromStation.clear()
         fromStation.send_keys(input('输入发车站>> '))
-        fromStation.click()
+        aaa.click()
+        # fromStation.click()
         toStation.clear()
         toStation.send_keys(input('输入目的地站>> '))
-        toStation.click()
+        aaa.click()
+        # toStation.click()
         date.clear()
         date.send_keys(input('输入车车日期(格式:2000-01-22)>> '))
-        date.click()
+        aaa.click()
+        # date.click()
         btn_search.click()
-
         time.sleep(3)
-        self.browser.save_screenshot('2.png')
-
+        self.browser.save_screenshot('4.png')
         self.parse(current_page=1)
 
     def parse(self, current_page):
@@ -122,12 +125,12 @@ class TrainTicketSpider(object):
         page_count -= current_page
         if page_count:
             current_page += 1
-            a_next = self.browser.find_element(By.XPATH, '//a[@data-pager={page}]'.format(page=current_page))
+            a_next = self.browser.find_element_by_xpath('//a[@data-pager={page}]'.format(page=current_page))
             a_next.click()
-            time.sleep(3)
+            time.sleep(4)
 
             # 递归调用解析方法
-            self.parse(current_page)
+            self.parse(current_page=current_page)
         else:
             print('爬取结束')
             # 关闭数据库
