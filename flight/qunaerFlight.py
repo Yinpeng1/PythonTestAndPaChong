@@ -7,6 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.chrome.options import Options
+import redis
 import sys
 
 class TrainTicketSpider(object):
@@ -22,8 +23,10 @@ class TrainTicketSpider(object):
         dcap = dict(DesiredCapabilities.PHANTOMJS)
         dcap["phantomjs.page.settings.userAgent"] = (
             "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.79 Safari/537.36")
+        dcap["phantomjs.page.settings.loadImages"] = False
         self.browser = webdriver.PhantomJS(
-            executable_path=r"C:\Users\pyin\AppData\Local\Programs\Python\Python36-32\Scripts\phantomjs-2.1.1-windows\phantomjs-2.1.1-windows\bin\phantomjs.exe")
+            executable_path=r"C:\Users\pyin\AppData\Local\Programs\Python\Python36-32\Scripts\phantomjs-2.1.1-windows\phantomjs-2.1.1-windows\bin\phantomjs.exe",
+            desired_capabilities=dcap)
 
         self.connection = pymysql.connect(host='localhost',
                                           user='root',
@@ -31,11 +34,15 @@ class TrainTicketSpider(object):
                                           db='test',
                                           port=3306,
                                           charset='utf8',  # 不能用utf-8
+
                                           cursorclass=pymysql.cursors.DictCursor)
 
     def crawl(self, url):
         self.browser.set_page_load_timeout(30)
-        self.browser.get(url)
+        try:
+            self.browser.get(url)
+        except:
+            pass
         self.browser.save_screenshot('1.png')
 
         # 单程还是往返
@@ -223,15 +230,15 @@ class TrainTicketSpider(object):
     def save(self, air_company, air_type, dep_date, dep_time, arr_time, duration, dep_airport, transit_airport_title, transit_airport_city,
              transit_airport, transit_airport_time, transit_airport_duration, arr_airport, ticket_price_type, ticket_price, ticket_discount, ticket_resource):
         with self.connection.cursor() as cursor:
-            sql = 'INSERT INTO qunaer_flight_info(air_company, air_type, dep_date, dep_time, arr_time, duration, dep_airport, transit_airport_title, transit_airport_city, transit_airport, transit_airport_time, transit_airport_duration, arr_airport, ticket_price_type, ticket_price, ticket_discount, ticket_resource) ' \
-                  'VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
+            sql = 'INSERT INTO qunaer_flight_info(air_company, air_type, dep_date, dep_time, arr_time, duration, dep_airport, transit_airport_title, transit_airport_city, transit_airport, transit_airport_time, transit_airport_duration, arr_airport, ticket_price_type, ticket_price, ticket_discount, ticket_resource, dep_city, arr_city) ' \
+                  'VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
             cursor.execute(sql, (air_company, air_type, dep_date, dep_time, arr_time, duration, dep_airport, transit_airport_title, transit_airport_city, transit_airport,
-                                transit_airport_time, transit_airport_duration, arr_airport, ticket_price_type, ticket_price, ticket_discount, ticket_resource))
+                                transit_airport_time, transit_airport_duration, arr_airport, ticket_price_type, ticket_price, ticket_discount, ticket_resource, self.depCity, self.arrCity))
         self.connection.commit()
 
 
 if __name__ == '__main__':
     url = 'https://flight.qunar.com'
-    # spider = TrainTicketSpider(depCity="上海", arrCity="三亚", depdate="2018-09-19")
-    spider = TrainTicketSpider(depCity=sys.argv[1], arrCity=sys.argv[2], depdate=sys.argv[3])
+    spider = TrainTicketSpider(depCity="上海", arrCity="三亚", depdate="2018-10-26")
+    # spider = TrainTicketSpider(depCity=sys.argv[1], arrCity=sys.argv[2], depdate=sys.argv[3])
     spider.crawl(url)
