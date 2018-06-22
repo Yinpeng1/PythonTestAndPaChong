@@ -181,6 +181,7 @@ class TrainTicketSpider(object):
             print('爬取结束')
             # 关闭数据库
             self.connection.close()
+            self.browser.quit();
 
 
     def update_price(self, update_ticket_price, li):
@@ -232,13 +233,19 @@ class TrainTicketSpider(object):
         with self.connection.cursor() as cursor:
             sql = 'INSERT INTO qunaer_flight_info(air_company, air_type, dep_date, dep_time, arr_time, duration, dep_airport, transit_airport_title, transit_airport_city, transit_airport, transit_airport_time, transit_airport_duration, arr_airport, ticket_price_type, ticket_price, ticket_discount, ticket_resource, dep_city, arr_city) ' \
                   'VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
-            cursor.execute(sql, (air_company, air_type, dep_date, dep_time, arr_time, duration, dep_airport, transit_airport_title, transit_airport_city, transit_airport,
+            cursor.execute(
+                "select * from qunaer_flight_info where dep_date='%s' and air_type = '%s'" % (dep_date, air_type))
+            lists = cursor.fetchall()
+            if lists:
+                pass
+            else:
+                cursor.execute(sql, (air_company, air_type, dep_date, dep_time, arr_time, duration, dep_airport, transit_airport_title, transit_airport_city, transit_airport,
                                 transit_airport_time, transit_airport_duration, arr_airport, ticket_price_type, ticket_price, ticket_discount, ticket_resource, self.depCity, self.arrCity))
         self.connection.commit()
 
 
 if __name__ == '__main__':
     url = 'https://flight.qunar.com'
-    spider = TrainTicketSpider(depCity="上海", arrCity="三亚", depdate="2018-10-26")
-    # spider = TrainTicketSpider(depCity=sys.argv[1], arrCity=sys.argv[2], depdate=sys.argv[3])
+    # spider = TrainTicketSpider(depCity="上海", arrCity="三亚", depdate="2018-10-26")
+    spider = TrainTicketSpider(depCity=sys.argv[1], arrCity=sys.argv[2], depdate=sys.argv[3])
     spider.crawl(url)

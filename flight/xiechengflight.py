@@ -82,7 +82,11 @@ class TrainTicketSpider(object):
         self.browser.save_screenshot('2.png')
 
         self.browser.execute_script('window.scrollTo(0, document.body.scrollHeight)')
-        time.sleep(8)
+        time.sleep(3)
+        self.browser.execute_script('window.scrollTo(0, document.body.scrollHeight)')
+        time.sleep(3)
+        self.browser.execute_script('window.scrollTo(0, document.body.scrollHeight)')
+        time.sleep(3)
         self.browser.execute_script('window.scrollTo(document.body.scrollHeight, 0)')
 
         self.parse(current_page=1, date=self.depDate)
@@ -289,14 +293,19 @@ class TrainTicketSpider(object):
         with self.connection.cursor() as cursor:
             sql = 'INSERT INTO qunaer_flight_info(air_company, air_type, dep_date, dep_time, arr_time, duration, dep_airport, transit_airport_title, transit_airport_city, transit_airport, transit_airport_time, transit_airport_duration, arr_airport, ticket_price_type, ticket_price, ticket_discount, ticket_resource, dep_city, arr_city) ' \
                   'VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
-            cursor.execute(sql, (air_company, air_type, dep_date, dep_time, arr_time, duration, dep_airport, transit_airport_title, transit_airport_city, transit_airport,
-                                transit_airport_time, transit_airport_duration, arr_airport, ticket_price_type, ticket_price, ticket_discount, ticket_resource, self.depCity, self.arrCity))
+            cursor.execute("select * from qunaer_flight_info where dep_date='%s' and air_type = '%s'" % (dep_date, air_type))
+            lists = cursor.fetchall()
+            if lists:
+                pass
+            else:
+                cursor.execute(sql, (air_company, air_type, dep_date, dep_time, arr_time, duration, dep_airport, transit_airport_title, transit_airport_city, transit_airport,
+                                    transit_airport_time, transit_airport_duration, arr_airport, ticket_price_type, ticket_price, ticket_discount, ticket_resource, self.depCity, self.arrCity))
         self.connection.commit()
 
 
 
 if __name__ == '__main__':
     url = 'http://flights.ctrip.com/international/'
-    # spider = TrainTicketSpider(depCity="上海", arrCity="三亚", depdate="2018-10-12")
+    # spider = TrainTicketSpider(depCity="上海", arrCity="三亚", depdate="2018-11-23")
     spider = TrainTicketSpider(depCity=sys.argv[1], arrCity=sys.argv[2], depdate=sys.argv[3])
     spider.crawl(url)
