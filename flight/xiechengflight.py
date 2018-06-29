@@ -116,8 +116,12 @@ class TrainTicketSpider(object):
                     continue
                 elif li.xpath('.//div[@class="search_more_transfer_city_inner"]'):
                     pass
-                elif li.xpath('.//div[@class="search_transfer_tab"]/a/h3/text()'):
-                    pass
+                elif li.xpath('.//div[@class="search_transfer_tab"]/a[1]/h3/text()'):
+                    continue
+                elif li.xpath('.//div[@class="search_transfer_header J_header_row J_header_wrap"]'):
+                    continue
+                elif li.xpath('.//div[@class="search_transfer_header J_header_row"]'):
+                    continue
                 else:
                     self.getZNDate(li, date)
 
@@ -317,10 +321,10 @@ class TrainTicketSpider(object):
 
 
 if __name__ == '__main__':
-    i = 24
-    while i < 30:
+    i = 1
+    while i < 10:
         url = 'http://flights.ctrip.com/international/'
-        spider = TrainTicketSpider(depCity="上海", arrCity="香港", depdate="2018-08-"+str(i))
+        spider = TrainTicketSpider(depCity="上海", arrCity="西安", depdate="2018-07-0"+str(i))
         # spider = TrainTicketSpider(depCity=sys.argv[1], arrCity=sys.argv[2], depdate=sys.argv[3])
         spider.crawl(url)
         print("第%d天爬取结束" % i)
