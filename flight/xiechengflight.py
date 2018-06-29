@@ -19,17 +19,17 @@ class TrainTicketSpider(object):
         self.depCity = depCity
         self.arrCity = arrCity
         self.depDate = depdate
-        dcap = dict(DesiredCapabilities.PHANTOMJS)
-        dcap["phantomjs.page.settings.userAgent"] = (
-            "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.79 Safari/537.36")
-        dcap["phantomjs.page.settings.loadImages"] = False
-        self.browser = webdriver.PhantomJS(
-            executable_path=r"C:\Users\pyin\AppData\Local\Programs\Python\Python36-32\Scripts\phantomjs-2.1.1-windows\phantomjs-2.1.1-windows\bin\phantomjs.exe",
-            desired_capabilities=dcap)
-        # chrome_options = Options()
+        # dcap = dict(DesiredCapabilities.PHANTOMJS)
+        # dcap["phantomjs.page.settings.userAgent"] = (
+        #     "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.79 Safari/537.36")
+        # dcap["phantomjs.page.settings.loadImages"] = False
+        # self.browser = webdriver.PhantomJS(
+        #     executable_path=r"C:\Users\pyin\AppData\Local\Programs\Python\Python36-32\Scripts\phantomjs-2.1.1-windows\phantomjs-2.1.1-windows\bin\phantomjs.exe",
+        #     desired_capabilities=dcap)
+        chrome_options = Options()
         # chrome_options.add_argument('--headless')
         # chrome_options.add_argument('--disable-gpu')
-        # self.browser = webdriver.Chrome("C:\chromedriver\chromedriver.exe", chrome_options=chrome_options)
+        self.browser = webdriver.Chrome("C:\chromedriver\chromedriver.exe", chrome_options=chrome_options)
         self.connection = pymysql.connect(host='localhost',
                                           user='root',
                                           password='123',
@@ -86,7 +86,7 @@ class TrainTicketSpider(object):
         self.browser.execute_script('window.scrollTo(0, document.body.scrollHeight)')
         time.sleep(3)
         self.browser.execute_script('window.scrollTo(0, document.body.scrollHeight)')
-        time.sleep(3)
+        time.sleep(2)
         self.browser.execute_script('window.scrollTo(document.body.scrollHeight, 0)')
 
         self.parse(current_page=1, date=self.depDate)
@@ -101,15 +101,25 @@ class TrainTicketSpider(object):
             for li in fly_list:
                 if li.xpath('.//div[@class="flight-item   "]'):
                     li = li.xpath('.//div[@class="flight-item   "]')
-                    print(len(li))
+                    # print(len(li))
                     for i in li:
                         self.getData(i, date)
                 else:
-                    self.getData(li, date)
+                    if li.xpath('.//div[@class="flight-row"]'):
+                        self.getData(li, date)
+                    else:
+                        continue
         else:
             fly_list = HTML.xpath('.//div[@id="J_flightlist2"]/div')
             for li in fly_list:
-                self.getZNDate(li,date)
+                if li.xpath('.//div[@class="search_transfer_title"]'):
+                    continue
+                elif li.xpath('.//div[@class="search_more_transfer_city_inner"]'):
+                    pass
+                elif li.xpath('.//div[@class="search_transfer_tab"]/a/h3/text()'):
+                    pass
+                else:
+                    self.getZNDate(li, date)
 
         print('爬取结束')
         # 关闭数据库
@@ -253,7 +263,7 @@ class TrainTicketSpider(object):
         transit_airport_duration = ""
         if li.xpath(
                 './/div[@class="flight-row"]/div[@class="flight-col-more"]/div[@class="flight-stop-info"]/div[@class="flight-stop"]/span[@class="stop-city stop-city-transfer"]/text()'):
-            print(len(li.xpath('.//div[@class="trans"]/div[@class="g-up-tips"]/span[@class="t"]/span/text()')))
+            # print(len(li.xpath('.//div[@class="trans"]/div[@class="g-up-tips"]/span[@class="t"]/span/text()')))
             transit_airport_city = li.xpath('.//div[@class="flight-row"]/div[@class="flight-col-more"]/div[@class="flight-stop-info"]/div[@class="flight-stop"]/span[@class="stop-city stop-city-transfer"]/text()')[0]
 
         if li.xpath('.//div[@class="flight-detail-expend"]/div[@class="section-stop"]/div[@class="in"]/text()'):
@@ -293,10 +303,11 @@ class TrainTicketSpider(object):
         with self.connection.cursor() as cursor:
             sql = 'INSERT INTO qunaer_flight_info(air_company, air_type, dep_date, dep_time, arr_time, duration, dep_airport, transit_airport_title, transit_airport_city, transit_airport, transit_airport_time, transit_airport_duration, arr_airport, ticket_price_type, ticket_price, ticket_discount, ticket_resource, dep_city, arr_city) ' \
                   'VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
-            cursor.execute("select * from qunaer_flight_info where dep_date='%s' and air_type = '%s'" % (dep_date, air_type))
+            sql2 = "update qunaer_flight_info set ticket_price = '%s' where dep_date='%s' and air_type = '%s' and air_company='%s' and dep_time='%s'" % (ticket_price, dep_date, air_type,air_company, dep_time)
+            cursor.execute("select * from qunaer_flight_info where dep_date='%s' and air_type = '%s' and air_company='%s' and dep_time='%s'" % (dep_date, air_type,air_company, dep_time))
             lists = cursor.fetchall()
             if lists:
-                pass
+                cursor.execute(sql2)
             else:
                 cursor.execute(sql, (air_company, air_type, dep_date, dep_time, arr_time, duration, dep_airport, transit_airport_title, transit_airport_city, transit_airport,
                                     transit_airport_time, transit_airport_duration, arr_airport, ticket_price_type, ticket_price, ticket_discount, ticket_resource, self.depCity, self.arrCity))
@@ -306,6 +317,6 @@ class TrainTicketSpider(object):
 
 if __name__ == '__main__':
     url = 'http://flights.ctrip.com/international/'
-    # spider = TrainTicketSpider(depCity="上海", arrCity="三亚", depdate="2018-11-23")
-    spider = TrainTicketSpider(depCity=sys.argv[1], arrCity=sys.argv[2], depdate=sys.argv[3])
+    spider = TrainTicketSpider(depCity="上海", arrCity="香港", depdate="2018-07-28")
+    # spider = TrainTicketSpider(depCity=sys.argv[1], arrCity=sys.argv[2], depdate=sys.argv[3])
     spider.crawl(url)

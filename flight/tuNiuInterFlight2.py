@@ -162,10 +162,14 @@ class TrainTicketSpider(object):
         with self.connection.cursor() as cursor:
             sql = 'INSERT INTO qunaer_flight_info(air_company, air_type, dep_date, dep_time, arr_time, duration, dep_airport, transit_airport_title, transit_airport_city, transit_airport, transit_airport_time, transit_airport_duration, arr_airport, ticket_price_type, ticket_price, ticket_discount, ticket_resource, dep_city, arr_city) ' \
                   'VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
-            cursor.execute("select * from qunaer_flight_info where dep_date='%s' and air_type = '%s' and dep_time = '%s'" % (dep_date, air_type, dep_time))
+            sql2 = "update qunaer_flight_info set ticket_price = '%s' where dep_date='%s' and air_type = '%s' and air_company='%s' and dep_time='%s'" % (
+            ticket_price, dep_date, air_type, air_company, dep_time)
+            cursor.execute(
+                "select * from qunaer_flight_info where dep_date='%s' and air_type = '%s' and air_company='%s' and dep_time='%s'" % (
+                dep_date, air_type, air_company, dep_time))
             lists = cursor.fetchall()
             if lists:
-                pass
+                cursor.execute(sql2)
             else:
                 cursor.execute(sql, (air_company, air_type, dep_date, dep_time, arr_time, duration, dep_airport, transit_airport_title, transit_airport_city, transit_airport,
                                     transit_airport_time, transit_airport_duration, arr_airport, ticket_price_type, ticket_price, ticket_discount, ticket_resource, self.depCity, self.arrCity))
@@ -175,6 +179,6 @@ class TrainTicketSpider(object):
 
 if __name__ == '__main__':
     url = 'http://flight.tuniu.com/intel'
-    spider = TrainTicketSpider(depCity="上海", arrCity="洛杉矶", depdate="2018-11-05")
+    spider = TrainTicketSpider(depCity="上海", arrCity="香港", depdate="2018-10-05")
     # spider = TrainTicketSpider(depCity=sys.argv[1], arrCity=sys.argv[2], depdate=sys.argv[3])
     spider.crawl(url)
