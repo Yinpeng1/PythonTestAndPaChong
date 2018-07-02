@@ -32,18 +32,19 @@ class TrainTicketSpider(object):
         chrome_options = Options()
         # chrome_options.add_argument('--headless')
         # chrome_options.add_argument('--disable-gpu')
-        # chrome_options.add_argument("--proxy-server=http://")
-        desired_capabilities = webdriver.DesiredCapabilities.INTERNETEXPLORER.copy()
-        desired_capabilities['proxy'] = {
-            "httpProxy": "http://114.115.144.137:3128/",
-            "ftpProxy": "http://114.115.144.137:3128/",
-            "sslProxy": "http://114.115.144.137:3128/",
-            "noProxy": None,
-            "proxyType": "MANUAL",
-            "class": "org.openqa.selenium.Proxy",
-            "autodetect": False
-        }
-        self.browser = webdriver.Chrome("C:\chromedriver\chromedriver.exe", chrome_options=chrome_options, desired_capabilities=desired_capabilities)
+        # chrome_options.add_argument("--proxy-server=http://39.135.24.11:80")
+        chrome_options.add_argument("--proxy-server=http://219.141.153.12:8080")
+        # desired_capabilities = webdriver.DesiredCapabilities.INTERNETEXPLORER.copy()
+        # desired_capabilities['proxy'] = {
+        #     "httpProxy": "http://114.115.144.137:3128/",
+        #     "ftpProxy": "http://114.115.144.137:3128/",
+        #     "sslProxy": "http://114.115.144.137:3128/",
+        #     "noProxy": None,
+        #     "proxyType": "MANUAL",
+        #     "class": "org.openqa.selenium.Proxy",
+        #     "autodetect": False
+        # }
+        self.browser = webdriver.Chrome("C:\chromedriver\chromedriver.exe", chrome_options=chrome_options)
         # print(self.browser.get("http://httpbin.org/ip"))
         self.connection = pymysql.connect(host='47.98.102.190',
                                           user='root',

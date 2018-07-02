@@ -29,8 +29,12 @@ class TrainTicketSpider(object):
         #     executable_path=r"C:\Users\pyin\AppData\Local\Programs\Python\Python36-32\Scripts\phantomjs-2.1.1-windows\phantomjs-2.1.1-windows\bin\phantomjs.exe",
         #     desired_capabilities=dcap)
         chrome_options = Options()
-        chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--disable-gpu')
+        # chrome_options.add_argument('--headless')
+        # chrome_options.add_argument('--disable-gpu')
+        # chrome_options.add_argument("window-size=1024,768")
+        # chrome_options.add_argument("--no-sandbox")
+        # chrome_options.add_argument("--proxy-server=http://219.141.153.12:8080")
+        chrome_options.add_argument("--proxy-server=http://140.205.222.3:80")
         self.browser = webdriver.Chrome("C:\chromedriver\chromedriver.exe", chrome_options=chrome_options)
         self.connection = pymysql.connect(host='47.98.102.190',
                                           user='root',
