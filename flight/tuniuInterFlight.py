@@ -10,6 +10,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 import sys
+import os
 
 class TrainTicketSpider(object):
     """
@@ -31,7 +32,19 @@ class TrainTicketSpider(object):
         chrome_options = Options()
         # chrome_options.add_argument('--headless')
         # chrome_options.add_argument('--disable-gpu')
-        self.browser = webdriver.Chrome("C:\chromedriver\chromedriver.exe", chrome_options=chrome_options)
+        # chrome_options.add_argument("--proxy-server=http://")
+        desired_capabilities = webdriver.DesiredCapabilities.INTERNETEXPLORER.copy()
+        desired_capabilities['proxy'] = {
+            "httpProxy": "http://114.115.144.137:3128/",
+            "ftpProxy": "http://114.115.144.137:3128/",
+            "sslProxy": "http://114.115.144.137:3128/",
+            "noProxy": None,
+            "proxyType": "MANUAL",
+            "class": "org.openqa.selenium.Proxy",
+            "autodetect": False
+        }
+        self.browser = webdriver.Chrome("C:\chromedriver\chromedriver.exe", chrome_options=chrome_options, desired_capabilities=desired_capabilities)
+        # print(self.browser.get("http://httpbin.org/ip"))
         self.connection = pymysql.connect(host='47.98.102.190',
                                           user='root',
                                           password='123',
@@ -235,8 +248,8 @@ class TrainTicketSpider(object):
 
 
 if __name__ == '__main__':
-    i = 10
-    while i < 11:
+    i = 15
+    while i < 20:
         url = 'http://flight.tuniu.com/intel'
         spider = TrainTicketSpider(depCity="上海", arrCity="洛杉矶", depdate="2018-07-"+str(i))
         # spider = TrainTicketSpider(depCity=sys.argv[1], arrCity=sys.argv[2], depdate=sys.argv[3])
