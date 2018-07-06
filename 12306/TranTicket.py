@@ -57,7 +57,7 @@ class TrainTicketSpider(object):
         #self.browser.set_page_load_timeout(30)
         self.browser.get(url)
         WebDriverWait(self.browser, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "touclick-image")))
-        time.sleep(5)
+        time.sleep(3)
         # self.browser.set_window_size(1920, 1080)
         self.browser.save_screenshot('1.png')
         img = self.browser.find_element_by_class_name("touclick-image")
