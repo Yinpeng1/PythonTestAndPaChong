@@ -321,12 +321,7 @@ class TrainTicketSpider(object):
 
 
 if __name__ == '__main__':
-    i = 1
-    while i < 10:
-        url = 'http://flights.ctrip.com/international/'
-        spider = TrainTicketSpider(depCity="上海", arrCity="西安", depdate="2018-07-0"+str(i))
-        # spider = TrainTicketSpider(depCity=sys.argv[1], arrCity=sys.argv[2], depdate=sys.argv[3])
-        spider.crawl(url)
-        print("第%d天爬取结束" % i)
-        i +=1
-        time.sleep(4)
+    url = 'http://flights.ctrip.com/international/'
+    spider = TrainTicketSpider(depCity="上海", arrCity="香港", depdate="2018-10-13")
+    # spider = TrainTicketSpider(depCity=sys.argv[1], arrCity=sys.argv[2], depdate=sys.argv[3])
+    spider.crawl(url)

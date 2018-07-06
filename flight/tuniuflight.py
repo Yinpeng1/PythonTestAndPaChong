@@ -87,7 +87,7 @@ class TrainTicketSpider(object):
         time.sleep(5)
         z = self.browser.window_handles
         print(z)
-        self.browser.switch_to.window(self.browser.window_handles[1])
+        #self.browser.switch_to.window(self.browser.window_handles[1])
         # self.browser.switch_to_window(self.browser.window_handles[1])
         self.browser.save_screenshot('2.png')
 
@@ -176,7 +176,7 @@ class TrainTicketSpider(object):
 
 
 if __name__ == '__main__':
-    url = 'http://flight.tuniu.com/'
+    url = 'http://flight.tuniu.com/intel'
     spider = TrainTicketSpider(depCity="上海", arrCity="三亚", depdate="2018-11-23")
     # spider = TrainTicketSpider(depCity=sys.argv[1], arrCity=sys.argv[2], depdate=sys.argv[3])
     spider.crawl(url)
