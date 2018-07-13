@@ -52,100 +52,12 @@ class TrainTicketSpider(object):
         # chrome_options.add_argument("--proxy-server=http://39.135.24.11:80")
         self.browser = webdriver.Chrome("C:\chromedriver\chromedriver.exe", chrome_options=chrome_options)
 
-
-    def get_img(self, url):
-        #self.browser.set_page_load_timeout(30)
-        self.browser.get(url)
-        WebDriverWait(self.browser, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "touclick-image")))
-        time.sleep(3)
-        # self.browser.set_window_size(1920, 1080)
-        self.browser.save_screenshot('1.png')
-        img = self.browser.find_element_by_class_name("touclick-image")
-        print(img.location)  # 打印元素坐标
-        print(img.size)  # 打印元素大小
-        left = img.location['x']
-        top = img.location['y']
-        right = img.location['x'] + img.size['width']
-        bottom = img.location['y'] + img.size['height']
-        im = Image.open('1.png')
-        im = im.crop((left, top, right, bottom))
-        im.save('1.png')
-        """ 读取图片 """
-        image = self.get_file_content('1.png')
-        """ 调用通用文字识别（高精度版） """
-        client.basicAccurate(image);
-        """ 如果有可选参数 """
-        options = {}
-        options["detect_direction"] = "true"
-        options["probability"] = "true"
-        """ 带参数调用通用文字识别（高精度版） """
-        text = client.basicAccurate(image, options)
-        print(text)
-        need_text = text['words_result'][0]['words']
-        if '-' in need_text:
-            need_text = need_text.replace("-", "")
-        if '一' in need_text:
-            need_text = need_text.replace("一", "")
-        need_text = need_text.split("的")[1]
-        print("需要识别的物体是>>>", need_text)
-        return need_text
-
-    def identityUmg(self):
-        files = {'file': open("1.png", 'rb')}
-        url = 'http://103.46.128.47:47720/'
-        request23 = requests.post(url=url, headers=headers, files=files)
-        # 自动解码
-        # print(request23.text)
-        imgre = re.compile(r'<B>(.*?)</B>')
-        res = re.findall(imgre, repr(request23.text))
-        print(res)
-        return res
-
-    def get_sub_img(self,im, x, y):
-        assert 0 <= x <= 3
-        assert 0 <= y <= 2
-        WITH = HEIGHT = 68
-        left = 5 + (67 + 5) * x
-        top = 41 + (67 + 5) * y
-        right = left + 67
-        bottom = top + 67
-        # im = im.crop((left, top, right, bottom))
-        # im = im.convert("RGB")
-        # width, height = im.size
-        # white = im.filter(ImageFilter.BLUR).filter(ImageFilter.MaxFilter(23))
-        # grey = im.convert('L')
-        # impix = im.load()
-        # whitepix = white.load()
-        # greypix = grey.load()
-        # for y in range(height):
-        #     for x in range(width):
-        #         greypix[x, y] = min(255, max(255 + impix[x, y][0] - whitepix[x, y][0],
-        #                                      255 + impix[x, y][1] - whitepix[x, y][1],
-        #                                      255 + impix[x, y][2] - whitepix[x, y][2]))
-        # new_im = grey.copy()
-        # self.binarize(new_im, 150)
-        return im.crop((left, top, right, bottom))
-
-    def binarize(self, im, thresh=120):
-        assert 0 < thresh < 255
-        assert im.mode == 'L'
-        w, h = im.size
-        for y in range(0, h):
-            for x in range(0, w):
-                if im.getpixel((x, y)) < thresh:
-                    im.putpixel((x, y), 0)
-                else:
-                    im.putpixel((x, y), 255)
-
-    def get_sub_img_text(self, img):
-        image = self.get_file_content(img)
-
-        """ 调用通用物体识别 """
-        res = client2.advancedGeneral(image)
-        print(res)
-        return res
-
     def crawl(self, url):
+        # self.browser.set_page_load_timeout(30)
+        self.browser.get(url)
+        WebDriverWait(self.browser, 10).until(EC.presence_of_element_located((By.ID, "fromStationText")))
+        time.sleep(1)
+        self.browser.save_screenshot('1.png')
         # searchType = self.browser.find_element_by_id("fromStationText")
         # 始发地
         fromCity = self.browser.find_element_by_id("fromStationText")
@@ -231,7 +143,7 @@ class TrainTicketSpider(object):
             ticket_remain = "有"
             ticket_click = self.browser.find_elements_by_xpath('.//td[@class="no-br"]/a')[0]
             ticket_click.click()
-            print(self.browser.window_handles)
+            # print(self.browser.window_handles)
         else:
             ticket_remain = "没有"
         print('当前车次%s,[%s]票>>>' % (train, ticket_remain))
@@ -246,68 +158,34 @@ class TrainTicketSpider(object):
             #          print("符合要求")
             #          return 1
 
+
 if __name__ == '__main__':
-    url = 'https://kyfw.12306.cn/otn/login/init'
+    url = 'https://kyfw.12306.cn/otn/leftTicket/init'
     spider = TrainTicketSpider(depCity="上海", arrCity="北京", depdate="2018-07-20")
-    text = spider.get_img(url)
-    aa = spider.identityUmg()
-    for i in aa:
-        arr = str(i).split(" ")
-        for j in arr:
-            if int(j) > 4:
-                y = 1
-                x = int(j) - 1 - 4
-            else:
-                y = 0
-                x = int(j) - 1
-            left = 5 + (67 + 5) * x
-            top = 41 + (67 + 5) * y
-            right = left + 67
-            bottom = top + 67
-            action = ActionChains(spider.browser)
-            action.move_to_element_with_offset(spider.browser.find_element_by_class_name("touclick-image"), left + 40, top + 40).click().perform()
+    spider.crawl(url)
+
+
+
 
 # if __name__ == '__main__':
 #     url = 'https://kyfw.12306.cn/otn/login/init'
 #     spider = TrainTicketSpider(depCity="上海", arrCity="北京", depdate="2018-07-20")
 #     text = spider.get_img(url)
-#     if text == '地瑚':
-#         text = '珊瑚'
-#     if text == '话梅':
-#         exit()
-#     if text == '公交卡':
-#         text = '车'
-#     if text == '手掌印':
-#         text = '图画'
-#     if text == '菜儿':
-#         text = '茶几'
-#     if text == '护腕':
-#         text == '帽'
-#     if text == '子子':
-#         text == '书本'
-#     if text == '双面胶':
-#         text = '胶'
-#     if text == '牌坊':
-#         text = '牌'
-#     if text == '电饭煲':
-#         text = '锅'
-#     if text == '热水袋':
-#         text = '礼盒'
-#     for y in range(2):
-#         for x in range(4):
-#             im2 = spider.get_sub_img(Image.open("1.png"), x, y)
-#             im2.save(str(y) + "_" + str(x) + ".png")
-#             result = spider.get_sub_img_text(str(y) + "_" + str(x) + ".png")
-#             aa = spider.check_img(result, text)
-#             # print(aa)
+#     aa = spider.identityUmg()
+#     for i in aa:
+#         arr = str(i).split(" ")
+#         for j in arr:
+#             if int(j) > 4:
+#                 y = 1
+#                 x = int(j) - 1 - 4
+#             else:
+#                 y = 0
+#                 x = int(j) - 1
 #             left = 5 + (67 + 5) * x
 #             top = 41 + (67 + 5) * y
 #             right = left + 67
 #             bottom = top + 67
-#             if aa == 1:
-#                 action = ActionChains(spider.browser)
-#                 action.move_to_element_with_offset(spider.browser.find_element_by_class_name("touclick-image"), left + 40, top + 40).click().perform()
-#
-#     time.sleep(600)
-#     spider.browser.quit()
+#             action = ActionChains(spider.browser)
+#             action.move_to_element_with_offset(spider.browser.find_element_by_class_name("touclick-image"), left + 40, top + 40).click().perform()
+
 
