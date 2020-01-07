@@ -21,7 +21,7 @@ class TrainTicketSpider(object):
         # chrome_options.add_argument("--proxy-server=http://39.135.24.11:80")
         self.browser = webdriver.Chrome("C:\chromedriver\chromedriver.exe", chrome_options=chrome_options)
         # print(self.browser.get("http://httpbin.org/ip"))
-        self.connection = pymysql.connect(host='localhost',
+        self.connection = pymysql.connect(host='47.98.102.190',
                                           user='root',
                                           password='123',
                                           db='test',

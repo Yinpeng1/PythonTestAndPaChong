@@ -1,0 +1,639 @@
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 114, in get_person_money_limit
+    persona_name = j_data["persona_name"]
+KeyError: 'persona_name'
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 116, in get_person_money_limit
+    user = j_data["user"]
+KeyError: 'user'
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 115, in get_person_money_limit
+    print(persona_name).trim()
+AttributeError: 'NoneType' object has no attribute 'trim'
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 115, in get_person_money_limit
+    print(persona_name).trim()
+AttributeError: 'NoneType' object has no attribute 'trim'
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 115, in get_person_money_limit
+    print(persona_name).trim()
+AttributeError: 'NoneType' object has no attribute 'trim'
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 115, in get_person_money_limit
+    print(persona_name).trim
+AttributeError: 'NoneType' object has no attribute 'trim'
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 126, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 65, in get_money
+    json_response = json.loads(response3.text)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 126, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 65, in get_money
+    json_response = json.loads(response3.text)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 128, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 66, in get_money
+    response3 = s.post(url=urlSelect, data=data, headers=headers, proxies=proxies)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 549, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 493, in request
+    prep.url, proxies, stream, verify, cert
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 665, in merge_environment_settings
+    no_proxy = proxies.get('no_proxy') if proxies is not None else None
+AttributeError: 'set' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 128, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 66, in get_money
+    response3 = s.post(url=urlSelect, data=data, headers=headers, proxies=proxies)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 549, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 493, in request
+    prep.url, proxies, stream, verify, cert
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 665, in merge_environment_settings
+    no_proxy = proxies.get('no_proxy') if proxies is not None else None
+AttributeError: 'set' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 128, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 59, in get_money
+    down_image()
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 36, in down_image
+    response1 = s.get(url=url, headers=headers, proxies=proxies)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 515, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 493, in request
+    prep.url, proxies, stream, verify, cert
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 665, in merge_environment_settings
+    no_proxy = proxies.get('no_proxy') if proxies is not None else None
+AttributeError: 'set' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 129, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 67, in get_money
+    response3 = s.post(url=urlSelect, data=data, headers=headers)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 549, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 502, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 606, in send
+    adapter = self.get_adapter(url=request.url)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 697, in get_adapter
+    raise InvalidSchema("No connection adapters were found for '%s'" % url)
+requests.exceptions.InvalidSchema: No connection adapters were found for '47.101.203.73:8080/product_mapping_check/get/test'
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 129, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 73, in get_money
+    if json_response["code"] == 10000:
+KeyError: 'code'
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 129, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 68, in get_money
+    json_response = json.loads(response3.text)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 129, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 68, in get_money
+    json_response = json.loads(response3.text)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 129, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 68, in get_money
+    json_response = json.loads(response3.text)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 129, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 68, in get_money
+    json_response = json.loads(response3.text)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 129, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 68, in get_money
+    json_response = json.loads(response3.text)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 129, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 68, in get_money
+    json_response = json.loads(response3.text)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 386, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 382, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 649, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='58.218.205.55', port=3164): Max retries exceeded with url: http://ceb2pub.chinaport.gov.cn/verifyCode/creator (Caused by ProxyError('Cannot connect to proxy.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None)))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 129, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 60, in get_money
+    down_image()
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 43, in down_image
+    response2 = s.get(url=cheakcode_url[0], headers=headers, proxies=proxies)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 515, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 502, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 612, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 502, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPConnectionPool(host='58.218.205.55', port=3164): Max retries exceeded with url: http://ceb2pub.chinaport.gov.cn/verifyCode/creator (Caused by ProxyError('Cannot connect to proxy.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None)))
+Traceback (most recent call last):
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 386, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 382, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 649, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='58.218.201.74', port=5553): Max retries exceeded with url: http://ceb2pub.chinaport.gov.cn/verifyCode/creator (Caused by ProxyError('Cannot connect to proxy.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None)))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 129, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 60, in get_money
+    down_image()
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 43, in down_image
+    response2 = s.get(url=cheakcode_url[0], headers=headers, proxies=proxies)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 515, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 502, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 612, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 502, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPConnectionPool(host='58.218.201.74', port=5553): Max retries exceeded with url: http://ceb2pub.chinaport.gov.cn/verifyCode/creator (Caused by ProxyError('Cannot connect to proxy.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None)))
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 129, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 60, in get_money
+    down_image()
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 37, in down_image
+    response1 = s.get(url=url, headers=headers)
+AttributeError: module 'requests.sessions' has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 386, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 382, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 649, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='58.218.201.74', port=5553): Max retries exceeded with url: http://ceb2pub.chinaport.gov.cn/verifyCode/creator (Caused by ProxyError('Cannot connect to proxy.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None)))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 129, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 60, in get_money
+    down_image()
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 43, in down_image
+    response2 = s.get(url=cheakcode_url[0], headers=headers, proxies=proxies)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 515, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 502, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 612, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 502, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPConnectionPool(host='58.218.201.74', port=5553): Max retries exceeded with url: http://ceb2pub.chinaport.gov.cn/verifyCode/creator (Caused by ProxyError('Cannot connect to proxy.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None)))
+Traceback (most recent call last):
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 386, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 382, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 266, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 649, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 388, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='58.218.201.74', port=5553): Max retries exceeded with url: http://ceb2pub.chinaport.gov.cn/verifyCode/creator (Caused by ProxyError('Cannot connect to proxy.', RemoteDisconnected('Remote end closed connection without response',)))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 129, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 60, in get_money
+    down_image()
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 43, in down_image
+    response2 = s.get(url=cheakcode_url[0], headers=headers)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 515, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 502, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 612, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 502, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPConnectionPool(host='58.218.201.74', port=5553): Max retries exceeded with url: http://ceb2pub.chinaport.gov.cn/verifyCode/creator (Caused by ProxyError('Cannot connect to proxy.', RemoteDisconnected('Remote end closed connection without response',)))
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 129, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 68, in get_money
+    json_response = json.loads(response3.text)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 129, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 68, in get_money
+    json_response = json.loads(response3.text)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 129, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 68, in get_money
+    json_response = json.loads(response3.text)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 143, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 82, in get_money
+    json_response = json.loads(response3.text)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 143, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 82, in get_money
+    json_response = json.loads(response3.text)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 143, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 82, in get_money
+    json_response = json.loads(response3.text)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 144, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 83, in get_money
+    json_response = json.loads(response3.text)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 144, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 74, in get_money
+    down_image()
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 47, in down_image
+    proxies["http"] = ip_cache[random.randint(0, len(ip_cache) - 1)]
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\random.py", line 220, in randint
+    return self.randrange(a, b+1)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\random.py", line 198, in randrange
+    raise ValueError("empty range for randrange() (%d,%d, %d)" % (istart, istop, width))
+ValueError: empty range for randrange() (0,0, 0)
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 144, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 74, in get_money
+    down_image()
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 47, in down_image
+    proxies["http"] = ip_cache[random.randint(0, len(ip_cache) - 1)]
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\random.py", line 220, in randint
+    return self.randrange(a, b+1)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\random.py", line 198, in randrange
+    raise ValueError("empty range for randrange() (%d,%d, %d)" % (istart, istop, width))
+ValueError: empty range for randrange() (0,0, 0)
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 144, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 74, in get_money
+    down_image()
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 47, in down_image
+    proxies["http"] = ip_cache[random.randint(0, len(ip_cache) - 1)]
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\random.py", line 220, in randint
+    return self.randrange(a, b+1)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\random.py", line 198, in randrange
+    raise ValueError("empty range for randrange() (%d,%d, %d)" % (istart, istop, width))
+ValueError: empty range for randrange() (0,0, 0)
+Traceback (most recent call last):
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\base64.py", line 37, in _bytes_from_decode_data
+    return s.encode('ascii')
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-2: ordinal not in range(128)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 149, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 82, in get_money
+    data['personalName'] = base64.b64decode(persona_name)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\base64.py", line 80, in b64decode
+    s = _bytes_from_decode_data(s)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\base64.py", line 39, in _bytes_from_decode_data
+    raise ValueError('string argument should contain only ASCII characters')
+ValueError: string argument should contain only ASCII characters
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 149, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 83, in get_money
+    data['idNumber'] = base64.b64decode(id_number)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\base64.py", line 87, in b64decode
+    return binascii.a2b_base64(s)
+binascii.Error: Incorrect padding
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 149, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 83, in get_money
+    data['idNumber'] = base64.b64decode(id_number.encode('utf-8'))
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\base64.py", line 87, in b64decode
+    return binascii.a2b_base64(s)
+binascii.Error: Incorrect padding
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 149, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 83, in get_money
+    data['idNumber'] = base64.b64decode(id_number.encode('utf-8'))
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\base64.py", line 87, in b64decode
+    return binascii.a2b_base64(s)
+binascii.Error: Incorrect padding
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 149, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 83, in get_money
+    data['idNumber'] = base64.b64decode(id_number.encode('utf-8'))
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\base64.py", line 87, in b64decode
+    return binascii.a2b_base64(s)
+binascii.Error: Incorrect padding
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 149, in get_person_money_limit
+    money, already_use = get_money(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 83, in get_money
+    data['idNumber'] = base64.b64decode(id_number.encode('utf-8'))
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\base64.py", line 87, in b64decode
+    return binascii.a2b_base64(s)
+binascii.Error: Incorrect padding
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 204, in get_person_money_limit
+    money, already_use = get_money2(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 114, in get_money2
+    json_response = json.loads(response3.text)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\json\decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 206, in get_person_money_limit
+    money, already_use = get_money2(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 123, in get_money2
+    money = json_response['result']['innerbalance']
+KeyError: 'result'
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 206, in get_person_money_limit
+    money, already_use = get_money2(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 123, in get_money2
+    money = json_response['result']['innerbalance']
+KeyError: 'result'
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 207, in get_person_money_limit
+    money, already_use = get_money2(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 124, in get_money2
+    money = json_response['result']['innerbalance']
+KeyError: 'result'
+Traceback (most recent call last):
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 386, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 382, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 266, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 649, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\util\retry.py", line 357, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 386, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\urllib3\connectionpool.py", line 382, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\http\client.py", line 266, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 214, in get_person_money_limit
+    money, already_use = get_money2(persona_name=persona_name, id_number=id_number)
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 114, in get_money2
+    down_image2()
+  File "C:/Users/123/PycharmProjects/PythonTestAndPaChong/haiGuanCapture/__init__.py", line 95, in down_image2
+    response2 = s.get(url=url2, headers=headers2)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 515, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 502, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\sessions.py", line 612, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\123\AppData\Local\Programs\Python\Python36\lib\site-packages\requests\adapters.py", line 490, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response',))

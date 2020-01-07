@@ -3,7 +3,7 @@ from PIL import ImageFilter
 import urllib.request
 import urllib.parse
 from urllib.parse import quote
-import pytesseract
+# import pytesseract
 import re
 import json
 # hack CERTIFICATE_VERIFY_FAILED

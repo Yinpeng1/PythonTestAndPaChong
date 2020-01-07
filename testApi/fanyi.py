@@ -46,6 +46,7 @@ def translate(content):
 
     target = json.loads(youdao_html)
     target2 = json.loads(baidu_html)
+    print(target2)
     result = ""
     print('target: %s' % (target['translateResult']))
     print('target2: %s' % (target2['trans']))
